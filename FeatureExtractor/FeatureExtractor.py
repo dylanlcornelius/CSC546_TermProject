@@ -16,11 +16,52 @@ featFile = open(path + '\\PizzaFeatures.txt', 'w')
 with open(dataFile, 'r', encoding='utf-8') as f:
     reader = csv.reader(f, delimiter=',')
     next(reader, None)
+    #i = 2
+    sumUp = 0
+    sumDown = 0
+    avg = 0
+    sumUp2 = 0
+    sumDown2 = 0
+    avg2 = 0
     for row in reader:
-        featFile.write(repr((float(row[1])/ 0.000001 if float(row[2]) == 0 else float(row[2]))))
-    #print(line)
-    #number of up-doots/down-doots
-    #text was edited
+        # number of up-doots/down-doots
+        if row[22] == 'TRUE':
+            sumUp += float(row[2])
+            sumDown += float(row[1])
+            avg += 1
+        else:
+            sumUp2 += float(row[2])
+            sumDown2 += float(row[1])
+            avg2 += 1
+
+        featFile.write(repr(float(row[1])) + ',')
+        featFile.write(repr(float(row[2])) + ',')
+
+        #text was edited
+        appended = 0
+        if row[3] == 'TRUE':
+            appended = 1
+        featFile.write(repr(appended) + ',')
+
+        #print(row[6])
+        #text = ['Hi bb cc', 'cc dd ee', row[6]]
+        #count_vect = CountVectorizer()
+        #counts = count_vect.fit_transform(text)
+        #print(counts.shape)
+        #print(count_vect.vocabulary_.get(u'Hi'))
+
+        featFile.write('\n')
+
+'''
+    print(avg)
+    print(avg2)
+    print()
+    print(sumUp/avg)
+    print(sumUp2/avg2)
+    print()
+    print(sumDown/avg)
+    print(sumDown2/avg2)
+'''
     #text
     #account age at request
     #days since first post
