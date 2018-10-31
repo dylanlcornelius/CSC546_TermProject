@@ -38,10 +38,25 @@ with open(dataFile, 'r', encoding='utf-8') as f:
         featFile.write(repr(float(row[2])) + ',')
 
         #text was edited
+        '''
         appended = 0
         if row[3] == 'TRUE':
             appended = 1
         featFile.write(repr(appended) + ',')
+        '''
+
+        #number of comments
+        featFile.write(repr(float(row[5])) + ',')
+        #account age at request
+        featFile.write(repr(float(row[9])) + ',')
+        #days since first post on raop
+        featFile.write(repr(float(row[11])) + ',')
+        #number of comments in raop
+        featFile.write(repr(float(row[15])) + ',')
+        #number of posts in raop
+        featFile.write(repr(float(row[19])) + ',')
+        #up-doots - down-doots: karma
+        featFile.write(repr(float(row[23])))
 
         #print(row[6])
         #text = ['Hi bb cc', 'cc dd ee', row[6]]
