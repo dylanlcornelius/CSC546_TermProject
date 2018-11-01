@@ -77,6 +77,3 @@ with open(dataFile, 'r', encoding='utf-8') as f:
     print(sumDown/avg)
     print(sumDown2/avg2)
 '''
-    #text
-    #account age at request
-    #days since first post
