@@ -1,6 +1,6 @@
 import numpy as np
-from matplotlib import pyplot as plt
-from minisom import MiniSom
+#from matplotlib import pyplot as plt
+#from minisom import MiniSom
 import sompy
 # pip3 install git+https://github.com/compmonks/SOMPY.git
 
@@ -42,12 +42,12 @@ for line in data:
     print()
 '''
 
-som = sompy.SOMFactory.build(data, mapsize=[100,100],mask=None, mapshape='planar', lattice='rect', normalization='var', initialization='pca', neighborhood='gaussian', training='batch', name='sompy')
+som = sompy.SOMFactory.build(data, mapsize=[50,50],mask=None, mapshape='planar', lattice='rect', normalization='var', initialization='pca', neighborhood='gaussian', training='batch', name='sompy')
 #som = sompy.SOMFactory.build(data, mapsize=[10,10], normalization='var', initialization='pca')
 som.train(n_job=1, verbose='info')
 
 v = sompy.mapview.View2DPacked(50, 50, 'test', text_size=8)
-#v.show(som, what='codebook', cmap='jet', col_sz=6)
-v.show(som, what='cluster')
+v.show(som, what='codebook', cmap='jet', col_sz=6)
+#v.show(som, what='cluster')
 
 #plt.show()

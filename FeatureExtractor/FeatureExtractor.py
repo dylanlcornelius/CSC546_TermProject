@@ -5,7 +5,6 @@
 
 import os
 import csv
-from sklearn.feature_extraction.text import CountVectorizer
 
 path = os.path.dirname(os.path.realpath(__file__))
 dataFile = path + '\\train.csv'
@@ -16,7 +15,6 @@ featFile = open(path + '\\PizzaFeatures.txt', 'w')
 with open(dataFile, 'r', encoding='utf-8') as f:
     reader = csv.reader(f, delimiter=',')
     next(reader, None)
-    #i = 2
     sumUp = 0
     sumDown = 0
     avg = 0
@@ -37,14 +35,6 @@ with open(dataFile, 'r', encoding='utf-8') as f:
         featFile.write(repr(float(row[1])) + ',')
         featFile.write(repr(float(row[2])) + ',')
 
-        #text was edited
-        '''
-        appended = 0
-        if row[3] == 'TRUE':
-            appended = 1
-        featFile.write(repr(appended) + ',')
-        '''
-
         #number of comments
         featFile.write(repr(float(row[5])) + ',')
         #account age at request
@@ -56,24 +46,12 @@ with open(dataFile, 'r', encoding='utf-8') as f:
         #number of posts in raop
         featFile.write(repr(float(row[19])) + ',')
         #up-doots - down-doots: karma
-        featFile.write(repr(float(row[23])))
+        featFile.write(repr(float(row[23])) + ',')
 
-        #print(row[6])
-        #text = ['Hi bb cc', 'cc dd ee', row[6]]
-        #count_vect = CountVectorizer()
-        #counts = count_vect.fit_transform(text)
-        #print(counts.shape)
-        #print(count_vect.vocabulary_.get(u'Hi'))
+        #poster received pizza or not
+        appended = 0
+        if row[22] == 'TRUE':
+            appended = 1
+        featFile.write(repr(appended))
 
         featFile.write('\n')
-
-'''
-    print(avg)
-    print(avg2)
-    print()
-    print(sumUp/avg)
-    print(sumUp2/avg2)
-    print()
-    print(sumDown/avg)
-    print(sumDown2/avg2)
-'''

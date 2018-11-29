@@ -42,6 +42,16 @@ data = np.array(data, dtype=float)
 #X = np.array(list(zip(f1[:4000],f2[:4000],f3[:4000],f4[:4000],f5[:4000],f6[:4000],f7[:4000],f8[:4000])))
 X = data[:4000]
 
+print(X)
+
+#X = np.delete(X, np.s_[0:8], 1)
+X = X[:, [5, 8]]
+
+print(X)
+
+#X = np.delete(X, np.s_[2:5], 1)
+
+
 kmeans = KMeans(n_clusters=2)
 kmeans = kmeans.fit(X)
 labels = kmeans.predict(X)
@@ -49,7 +59,7 @@ centroids = kmeans.cluster_centers_
 
 
 #print(centroids)
-plt.scatter(X[:, 1], X[:, 3], c=labels, s=50, cmap='viridis')
+plt.scatter(X[:, 0], X[:, 1], c=labels, s=50, cmap='viridis')
 plt.scatter(centroids[:,0], centroids[:, 1], c='black', s=200, alpha=0.5)
 plt.axis('off')
 
