@@ -11,7 +11,6 @@ dataFile = path + '\\train.csv'
 
 featFile = open(path + '\\PizzaFeatures.txt', 'w')
 
-
 with open(dataFile, 'r', encoding='utf-8') as f:
     reader = csv.reader(f, delimiter=',')
     next(reader, None)
